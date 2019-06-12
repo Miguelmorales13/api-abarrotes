@@ -1,0 +1,47 @@
+ # Api para abarroteria
+
+ Api creada para enviar y recivir datos sobre una abarroteria usando unsa base de datos como mongoDB y typescript
+
+ - Autentificacion con token 
+ - Productos
+    - agregar
+    - eliminar
+    - actualizar
+    - ver
+ - Categorias de productos
+    - agregar
+    - eliminar
+    - actualizar
+    - ver
+ - Subategorias de productos
+    - agregar
+    - eliminar
+    - actualizar
+    - ver
+ - Ventas
+    - agregar
+    - eliminar
+    - actualizar
+    - ver
+ - Usuarios
+    - agregar
+    - eliminar
+    - actualizar
+    - ver
+ - Clientes
+    - agregar
+    - eliminar
+    - actualizar
+    - ver
+ - Roles
+    - agregar
+    - eliminar
+    - actualizar
+    - ver
+ - Proveedores
+    - agregar
+    - eliminar
+    - actualizar
+    - ver
+ - Globales
+    - ver contenido global
