@@ -1,5 +1,6 @@
 import express, { Application } from "express";
-import socket, { Socket } from "socket.io";
+import * as socket from "socket.io";
+import dotenv from 'dotenv'
 import http from "http";
 import morgan from "morgan";
 import cors from "cors";
@@ -15,10 +16,14 @@ class Server {
     public server: http.Server;
     private _socket: any
     constructor() {
+        console.log(process.env.NODE_ENV)
+
+        dotenv.config()
+
         this.app = express()
         this.server = http.createServer(this.app)
-        this.io = socket(this.server)
-        this._socket = SocketIndex(this.io)
+        // this.io = socket(this.server) as any
+        // this._socket = SocketIndex(this.io)
         this.app.use(express.static(path.join(__dirname, '../dist/')));
         this.config()
         this.routes()
@@ -28,12 +33,12 @@ class Server {
         this.app.use(morgan('dev'))
         this.app.use(cors())
         this.app.use(express.json())
-        this.app.set('io', this.io)
+        // this.app.set('io', this.io)
     }
     routes(): void {
         this.app.use('/api', Routes)
         this.app.get(/.*/, (req, res) => {
-            res.sendfile(path.join(__dirname, '../dist/index.html'))
+            res.json({upps:'no content'})
         })
     }
     async start(): Promise<void> {

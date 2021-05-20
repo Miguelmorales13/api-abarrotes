@@ -20,7 +20,7 @@ class GlobalsCtrl {
         try {
             const sales = await Sales.find({})
                 .where('createdAt')
-                .gte(new Date(new Date().setDate(new Date().getDate() - 8))).lte(new Date(new Date().setDate(new Date().getDate() + 1)))
+                .gte(new Date(new Date().setDate(new Date().getDate() - 8)).getTime()).lte(new Date(new Date().setDate(new Date().getDate() + 1)).getTime())
             const salesCount = sales.map((sale: any) => sale.total).reduce((valueBefore, valueAfter) => valueBefore + valueAfter)
 
             res.json(salesCount)
@@ -30,14 +30,14 @@ class GlobalsCtrl {
     }
     async countGlobal(req: Request, res: Response) {
         try {
-            const sales = await Sales.count(true);
-            const clients = await Clients.count(true);
-            const providers = await Providers.count(true);
-            const rols = await Rols.count(true);
-            const products = await Products.count(true);
-            const categories = await Categories.count(true);
-            const subcategories = await Subcategories.count(true);
-            const users = await Users.count(true);
+            const sales = await Sales.count();
+            const clients = await Clients.count();
+            const providers = await Providers.count();
+            const rols = await Rols.count();
+            const products = await Products.count();
+            const categories = await Categories.count();
+            const subcategories = await Subcategories.count();
+            const users = await Users.count();
             res.status(200).json({ sales, clients, providers, rols, products, categories, subcategories, users })
         } catch (error) {
             res.status(500).json(error)

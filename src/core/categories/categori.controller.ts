@@ -1,6 +1,7 @@
 
 import CategoriModel from "./categori.model";
 import { Request, Response } from "express";
+import newReport from "../../reports/genereteReport";
 class CategoriCtrl {
     public static instance: CategoriCtrl
     private constructor() { }
@@ -72,7 +73,7 @@ class CategoriCtrl {
         const bodyDable = categories.map((cat: any, i) => [i + 1, cat.name, cat.status]);
         bodyDable.unshift(["#", "NOMBRE", "ESTATUS"]);
         const whidsTable = ['auto', '*', 40]
-        res.status(200).json({ report: reportGenerator('Categorias', bodyDable, whidsTable, require('../../company/data')) });
+        res.status(200).json({ report: newReport('Categorias', bodyDable, whidsTable) });
     }
 }
 export default CategoriCtrl.getInstance()

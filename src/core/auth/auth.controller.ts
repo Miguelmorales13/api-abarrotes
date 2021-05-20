@@ -13,6 +13,7 @@ class AuthCtrl {
         return AuthCtrl.instance
     }
     async login(req: Request, res:Response) {
+        console.log(req.body)
         if (!req.body.user || !req.body.password) return res.status(404).json({error: 'ingrese sus datos'})
         try {
             const user:any= await User.findOne({ user: req.body.user }).populate('_shop')
